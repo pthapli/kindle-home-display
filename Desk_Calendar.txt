@@ -1,0 +1,22 @@
+WEEKLY DESK CALENDAR
+====================
+
+[ Monday - TODAY ]
+  * 10:00 AM - 10:30 AM : Daily Engineering Sync
+  * 02:00 PM - 02:45 PM : Product Design Review
+  * 04:30 PM - 05:00 PM : 1:1 Check-in
+===
+[ Tuesday ]
+  * 11:00 AM - 12:00 PM : Architecture Review
+  * 03:30 PM - 04:00 PM : Sprint Retrospective
+===
+[ Wednesday ]
+  * 09:30 AM - 10:00 AM : Team Standup
+  * 01:00 PM - 02:00 PM : Deep Work Session
+===
+[ Thursday ]
+  (No scheduled meetings - Focus Day)
+===
+[ Friday ]
+  * 10:00 AM - 10:30 AM : Weekly Team Wrap-up
+  * 04:00 PM - 04:30 PM : Planning Next Week

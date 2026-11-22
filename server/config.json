@@ -1,0 +1,9 @@
+{
+  "calendar_ics_urls": [
+    "PASTE_GOOGLE_CALENDAR_1_SECRET_ICAL_URL_HERE",
+    "PASTE_GOOGLE_CALENDAR_2_SECRET_ICAL_URL_HERE"
+  ],
+  "port": 8080,
+  "width": 1024,
+  "height": 758
+}

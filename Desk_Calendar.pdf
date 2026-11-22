@@ -1,0 +1,56 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 600 800] /Resources << /Font << /F1 4 0 R /F2 5 0 R >> >> /Contents 6 0 R >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+6 0 obj
+<< /Length 1159 >>
+stream
+BT /F2 26 Tf 40 740 Td (WEEKLY DESK CALENDAR) Tj ET
+3 w 40 725 m 560 725 l S
+BT /F2 18 Tf 40 690 Td ([ Monday - TODAY ]) Tj ET
+BT /F1 14 Tf 50 664 Td (  * 10:00 AM - 10:30 AM : Daily Engineering Sync) Tj ET
+BT /F1 14 Tf 50 642 Td (  * 02:00 PM - 02:45 PM : Product Design Review) Tj ET
+BT /F1 14 Tf 50 620 Td (  * 04:30 PM - 05:00 PM : 1:1 Check-in) Tj ET
+1.5 w 40 608 m 560 608 l S
+BT /F2 18 Tf 40 586 Td ([ Tuesday ]) Tj ET
+BT /F1 14 Tf 50 560 Td (  * 11:00 AM - 12:00 PM : Architecture Review) Tj ET
+BT /F1 14 Tf 50 538 Td (  * 03:30 PM - 04:00 PM : Sprint Retrospective) Tj ET
+1.5 w 40 526 m 560 526 l S
+BT /F2 18 Tf 40 504 Td ([ Wednesday ]) Tj ET
+BT /F1 14 Tf 50 478 Td (  * 09:30 AM - 10:00 AM : Team Standup) Tj ET
+BT /F1 14 Tf 50 456 Td (  * 01:00 PM - 02:00 PM : Deep Work Session) Tj ET
+1.5 w 40 444 m 560 444 l S
+BT /F2 18 Tf 40 422 Td ([ Thursday ]) Tj ET
+BT /F1 13 Tf 40 396 Td (  (No scheduled meetings - Focus Day)) Tj ET
+1.5 w 40 386 m 560 386 l S
+BT /F2 18 Tf 40 364 Td ([ Friday ]) Tj ET
+BT /F1 14 Tf 50 338 Td (  * 10:00 AM - 10:30 AM : Weekly Team Wrap-up) Tj ET
+BT /F1 14 Tf 50 316 Td (  * 04:00 PM - 04:30 PM : Planning Next Week) Tj ET
+endstream
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000251 00000 n 
+0000000321 00000 n 
+0000000396 00000 n 
+trailer
+<< /Size 7 /Root 1 0 R >>
+startxref
+1607
+%%EOF

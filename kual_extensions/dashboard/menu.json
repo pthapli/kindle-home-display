@@ -1,0 +1,46 @@
+{
+  "items": [
+    {
+      "name": "Smart Home & Meetings",
+      "priority": 1,
+      "items": [
+        {
+          "name": "Display Calendar (Native E-Ink)",
+          "priority": 1,
+          "action": "./bin/display_calendar_eips.sh",
+          "params": ""
+        },
+        {
+          "name": "Keep Screen Awake (No Sleep)",
+          "priority": 2,
+          "action": "./actions.sh",
+          "params": "nosleep"
+        },
+        {
+          "name": "Restore Auto-Sleep",
+          "priority": 3,
+          "action": "./actions.sh",
+          "params": "sleep"
+        },
+        {
+          "name": "Alexa: Toggle Desk Lamp",
+          "priority": 4,
+          "action": "./actions.sh",
+          "params": "toggle_desk_lamp"
+        },
+        {
+          "name": "Alexa: Meeting Mode (Focus)",
+          "priority": 5,
+          "action": "./actions.sh",
+          "params": "meeting_mode"
+        },
+        {
+          "name": "Alexa: All Lights Off",
+          "priority": 6,
+          "action": "./actions.sh",
+          "params": "all_off"
+        }
+      ]
+    }
+  ]
+}

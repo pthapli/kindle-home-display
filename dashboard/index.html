@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Desk Dashboard</title>
+  <!-- Auto-reload every 60 seconds to refresh meetings -->
+  <meta http-equiv="refresh" content="60">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+    body {
+      background-color: #ffffff;
+      color: #000000;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      padding: 16px;
+      user-select: none;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-bottom: 3px solid #000000;
+      padding-bottom: 12px;
+      margin-bottom: 20px;
+    }
+    .time {
+      font-size: 54px;
+      font-weight: 900;
+      line-height: 1;
+    }
+    .date {
+      font-size: 20px;
+      font-weight: 700;
+      text-transform: uppercase;
+      text-align: right;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .card {
+      border: 3px solid #000000;
+      padding: 16px;
+      border-radius: 4px;
+    }
+    .card h2 {
+      font-size: 22px;
+      border-bottom: 2px solid #000000;
+      padding-bottom: 6px;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+    .meeting-item {
+      padding: 10px 0;
+      border-bottom: 1px dashed #000000;
+    }
+    .meeting-item:last-child {
+      border-bottom: none;
+    }
+    .meeting-time {
+      font-size: 16px;
+      font-weight: bold;
+    }
+    .meeting-title {
+      font-size: 18px;
+    }
+    .btn-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .btn {
+      background: #ffffff;
+      color: #000000;
+      border: 3px solid #000000;
+      padding: 18px 10px;
+      font-size: 18px;
+      font-weight: bold;
+      text-align: center;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+    .btn.active {
+      background: #000000;
+      color: #ffffff;
+    }
+    .status-bar {
+      margin-top: 20px;
+      border-top: 2px solid #000000;
+      padding-top: 8px;
+      font-size: 14px;
+      display: flex;
+      justify-content: space-between;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="time" id="clock">--:--</div>
+    <div class="date" id="date">Loading...</div>
+  </header>
+
+  <div class="grid">
+    <!-- Meeting / Calendar Column -->
+    <div class="card">
+      <h2>Today's Meetings</h2>
+      <div id="meetings-list">
+        <div class="meeting-item">
+          <div class="meeting-time">10:00 AM - 10:30 AM</div>
+          <div class="meeting-title">Daily Engineering Sync</div>
+        </div>
+        <div class="meeting-item">
+          <div class="meeting-time">01:30 PM - 02:15 PM</div>
+          <div class="meeting-title">Product Design Review</div>
+        </div>
+        <div class="meeting-item">
+          <div class="meeting-time">04:00 PM - 04:30 PM</div>
+          <div class="meeting-title">1:1 Check-in</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Smart Home Controls Column -->
+    <div class="card">
+      <h2>Accessories</h2>
+      <div class="btn-grid">
+        <button class="btn" onclick="toggleAccessory(this, 'Desk Lamp')">Desk Lamp</button>
+        <button class="btn active" onclick="toggleAccessory(this, 'Ceiling Light')">Ceiling Light</button>
+        <button class="btn" onclick="toggleAccessory(this, 'Focus Mode')">Focus Mode</button>
+        <button class="btn" onclick="toggleAccessory(this, 'All Off')">All Off</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="status-bar">
+    <span id="network-status">Wi-Fi Connected</span>
+    <span>Auto-refresh: 60s</span>
+  </div>
+
+  <script>
+    function updateClock() {
+      const now = new Date();
+      const hours = String(now.getHours()).padStart(2, '0');
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      document.getElementById('clock').textContent = `${hours}:${minutes}`;
+
+      const options = { weekday: 'short', month: 'short', day: 'numeric' };
+      document.getElementById('date').textContent = now.toLocaleDateString('en-US', options);
+    }
+    updateClock();
+    setInterval(updateClock, 1000);
+
+    function toggleAccessory(btn, name) {
+      btn.classList.toggle('active');
+      // Here you can send a fetch request to your Home Assistant webhook / local API:
+      // fetch(`http://homeassistant.local:8123/api/webhook/${name.toLowerCase().replace(' ', '_')}`, { method: 'POST' });
+      console.log(`Toggled ${name}`);
+    }
+  </script>
+</body>
+</html>

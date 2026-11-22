@@ -1,29 +1,65 @@
-# Standalone Kindle Paperwhite Calendar Setup (Google Cloud - No Mac Needed)
+# Kindle Paperwhite Autonomous Desk Display Setup Guide
 
-This setup runs **100% in Google's cloud** using **Google Apps Script (free)**.
-Your Mac does **not** need to stay on. The Kindle fetches and refreshes directly over Wi-Fi.
+## Architecture Overview
 
-Now includes **Today's Detailed Agenda** + **7-Day Weekly View** with one-touch switching on your Kindle screen!
+This project turns an e-ink Kindle Paperwhite (PW3) into an autonomous desk HUD that stays up to date 24/7 with zero ongoing costs and zero computer host dependencies.
+
+### Phase 1: Current Implementation (Calendar + Weather HUD)
+1. **Google Apps Script Backend:**
+   - Free, serverless runtime hosted on Google Cloud infrastructure.
+   - Accesses Google Calendar APIs directly with your Google account credentials.
+   - Calls Open-Meteo for live weather metrics in Dehradun.
+   - Generates fully self-contained HTML pages with embedded CSS.
+   - Supports 4 visual styles (`swiss`, `editorial`, `nordic`, `cyberdeck`).
+2. **KOReader Document Engine:**
+   - KOReader renders `.html` files natively via its internal e-book layout engine.
+   - Supports custom CSS typography, large fonts, bold text, inverted contrast blocks, and page layout properties.
+   - Eliminates all limitations of the obsolete 2013-era stock Kindle browser.
+3. **`deskcalendar.koplugin` Background Worker:**
+   - Lives inside KOReader plugins directory.
+   - Wakes up periodically (configurable interval: 2m for testing, 5m-10m for production).
+   - Wakes Wi-Fi via Kindle `lipc` commands.
+   - Downloads the latest HTML output from Google Apps Script.
+   - Silently issues a document reload to refresh the e-ink screen hands-free.
 
 ---
 
-## Updating an Existing Deployment (or Creating New)
+## Google Apps Script Deployment
 
-1. Open your project on **[script.google.com](https://script.google.com)**.
-2. Replace all the code in `Code.gs` with the updated code from:
-   * **[google_apps_script/Code.gs](file:///Users/pthapli/Desktop/Work/personal/kindle/google_apps_script/Code.gs)**
-3. Press `Cmd + S` to save.
-4. In the top-right corner, click **Deploy → Manage deployments**:
-   * Click the **Pencil (Edit icon)** next to your active deployment.
-   * Under **Version**, select **"New version"**.
-   * Click **Deploy**.
-5. Your existing URL will now automatically have the **Today** and **This Week** views!
+1. Visit **[script.google.com](https://script.google.com)**.
+2. Paste the full contents of `google_apps_script/Code.gs`.
+3. Set your preferred default layout style:
+   ```javascript
+   const DEFAULT_STYLE = "swiss"; // "swiss", "editorial", "nordic", or "cyberdeck"
+   ```
+4. If monitoring multiple calendars, add secondary Google accounts to `ADDITIONAL_CALENDARS`:
+   ```javascript
+   const ADDITIONAL_CALENDARS = [
+     "work_email@company.com"
+   ];
+   ```
+5. Click **Deploy → Manage Deployments → Edit → New Version → Deploy**.
+6. Set access to **Anyone**.
 
 ---
 
-## Features on Your Kindle Display
+## KOReader Plugin Configuration
 
-* **One-Touch Tabs:** Tap **[ TODAY ]** or **[ THIS WEEK ]** right on the Kindle screen to switch between today's detailed schedule and the 7-day overview.
-* **Auto-Refresh:** Automatically fetches updates every 5 minutes from Google Cloud.
-* **Multi-Account Support:** Add secondary calendar emails to `ADDITIONAL_CALENDARS` in `Code.gs`.
-* **Zero Host Dependency:** You can shut down your Mac completely.
+The plugin source is located at `koreader_plugin/deskcalendar.koplugin/`:
+- **`_meta.lua`**: Plugin metadata definition.
+- **`main.lua`**: Background loop logic.
+
+### Refresh Interval:
+In `main.lua`, line 15:
+```lua
+local REFRESH_INTERVAL = 120 -- Interval in seconds (120 = 2 min, 300 = 5 min)
+```
+
+---
+
+## Phase 2 Roadmap: Smart Home & Automation
+
+Planned future extensions include:
+- **Alexa / Smart Home Accessory Webhooks:** Triggering room lights, desk lamps, and focus routines directly from Kindle touch events or physical actions.
+- **KUAL Launcher Shortcuts:** Standalone touch dashboard controls using KUAL booklets.
+- **Interactive Multi-Screen Navigation:** Swapping between Agenda, Weather Radar, and Home Control panels with simple touch gestures in KOReader.
